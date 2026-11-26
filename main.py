@@ -22,6 +22,8 @@ def main() -> None:
         raise ValueError(f"sign must be 1-120 characters, got {len(SIGN)}")
     if not SIGN.strip():
         raise ValueError("sign must not be only whitespace")
+    if "\n" in SIGN:
+        raise ValueError("sign must be a single line")
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(SIGN)
